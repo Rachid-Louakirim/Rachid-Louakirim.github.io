@@ -3,270 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Rachid Louakirim</title>
+    <title>Portfolio - Rachid Louakirim - BTS SIO SISR</title>
     <style>
         :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --bg: #f8f9fa;
+            --primary: #2b2b2b;
+            --secondary: #e67e22; /* Orange professionnel inspiré de la vidéo */
+            --bg-color: #fdfdfd;
+            --box-bg: #ffffff;
+            --text-color: #333333;
+            --gray-light: #f5f6fa;
+            --border-color: #e1e8ed;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: var(--bg);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        header {
+
+        /* Menu de navigation latéral type Dashboard */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100%;
             background-color: var(--primary);
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
         }
-        header h1 { margin: 0; font-size: 2.5em; }
-        header h2 { color: var(--secondary); margin: 5px 0 15px; font-weight: normal; }
-        .btn-cv {
-            display: inline-block;
-            background: var(--secondary);
-            color: #fff;
-            padding: 10px 20px;
+
+        .profile-pic-container {
+            width: 120px;
+            height: 120px;
+            background-color: white;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 0.8em;
+            text-align: center;
+            border: 3px solid var(--secondary);
+            overflow: hidden;
+        }
+
+        .sidebar h2 { margin: 5px 0; font-size: 1.2em; text-align: center; }
+        .sidebar p { font-size: 0.8em; color: #bdc3c7; text-align: center; margin-bottom: 30px; padding: 0 10px; }
+
+        .nav-links { width: 100%; display: flex; flex-direction: column; }
+        .nav-links a {
+            color: white;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 15px;
+            padding: 15px 25px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s;
         }
-        .btn-cv:hover { background: #2980b9; }
-        
-        .container {
-            width: 85%;
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--secondary);
         }
-        
-        .stage-banner {
-            background-color: #fdfae6;
-            border-left: 5px solid #f1c40f;
-            padding: 15px;
-            margin: 20px 0;
-            font-weight: bold;
-            text-align: center;
+
+        /* Contenu principal */
+        .main-content {
+            margin-left: 250px;
+            padding: 50px;
+        }
+
+        .header-title h1 { font-size: 2.8em; margin: 0; color: var(--primary); }
+        .header-title h2 { font-size: 1.8em; margin: 10px 0; color: var(--text-color); font-weight: 500; }
+        .header-title h3 { font-size: 1em; color: #7f8c8d; font-weight: normal; margin-bottom: 30px; }
+
+        .header-buttons a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 15px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
             border-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: bold;
+            transition: all 0.3s;
         }
+        .header-buttons a:hover { background-color: var(--primary); color: white; }
+        .header-buttons .btn-cv { background-color: var(--primary); color: white; }
+        .header-buttons .btn-cv:hover { background-color: transparent; color: var(--primary); }
 
         section {
-            background: #fff;
-            margin: 30px 0;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
         }
-        h2.section-title {
-            color: var(--primary);
-            border-bottom: 3px solid var(--secondary);
-            padding-bottom: 10px;
-            margin-top: 0;
-        }
+        .section-header { margin-bottom: 30px; }
+        .section-header h4 { color: var(--secondary); text-transform: uppercase; font-size: 0.8em; letter-spacing: 1px; margin: 0 0 5px 0; }
+        .section-header h2 { font-size: 2em; margin: 0; color: var(--primary); }
 
-        .timeline {
-            border-left: 3px solid var(--secondary);
-            padding-left: 20px;
-            margin-left: 20px;
+        /* Profil & Stage Grid */
+        .profil-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
         }
-        .timeline-item {
-            margin-bottom: 25px;
-            position: relative;
+        .stage-box {
+            background-color: var(--gray-light);
+            padding: 25px;
+            border-radius: 8px;
+            border-top: 4px solid var(--secondary);
         }
+        .stage-box h3 { color: var(--secondary); margin-top: 0; }
+
+        /* Parcours (Timeline) */
+        .timeline { border-left: 2px solid var(--border-color); padding-left: 30px; margin-left: 10px; }
+        .timeline-item { position: relative; margin-bottom: 40px; }
         .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -28px;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            background: var(--secondary);
-            border-radius: 50%;
+            content: ''; position: absolute; left: -36px; top: 0;
+            width: 10px; height: 10px; background-color: var(--bg-color);
+            border: 2px solid var(--secondary); border-radius: 50%;
         }
-        .timeline-date { font-weight: bold; color: var(--secondary); }
-        .timeline-title { font-size: 1.2em; font-weight: bold; margin: 5px 0; }
-        .timeline-loc { font-style: italic; color: #7f8c8d; }
+        .date-badge { display: inline-block; background: var(--primary); color: white; padding: 4px 10px; border-radius: 4px; font-size: 0.8em; font-weight: bold; margin-bottom: 10px; }
+        .timeline-content { background: var(--box-bg); padding: 20px; border: 1px solid var(--border-color); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .timeline-content h3 { margin: 0 0 5px 0; }
+        .timeline-content h4 { margin: 0 0 15px 0; color: #7f8c8d; font-weight: normal; font-style: italic; }
 
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .skill-box {
-            background: var(--bg);
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 4px solid var(--primary);
-        }
+        /* Compétences SISR */
+        .skills-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
+        .skill-category h3 { font-size: 1.1em; border-bottom: 2px solid var(--gray-light); padding-bottom: 10px; margin-bottom: 20px; }
+        .skill-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .skill-item { display: flex; flex-direction: column; align-items: center; background: var(--box-bg); padding: 15px 5px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-size: 0.9em; }
+        .skill-icon { font-size: 2em; margin-bottom: 10px; color: var(--primary); }
 
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.2s;
-        }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .tag-bloc1 {
-            display: inline-block;
-            background: #e1f5fe;
-            color: #0277bd;
-            font-size: 0.85em;
-            padding: 5px 10px;
-            border-radius: 15px;
-            margin: 5px 0;
-            font-weight: bold;
-        }
+        /* Projets E5 */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .project-card { background: var(--box-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; transition: transform 0.2s; display: flex; flex-direction: column; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .project-img { height: 160px; background-color: #ecf0f1; display: flex; align-items: center; justify-content: center; color: #95a5a6; font-style: italic; border-bottom: 1px solid var(--border-color); }
+        .project-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-status { font-size: 0.8em; font-weight: bold; color: var(--secondary); text-transform: uppercase; margin-bottom: 10px; }
+        .project-title { font-size: 1.2em; font-weight: bold; margin: 0 0 10px 0; }
+        .project-desc { font-size: 0.9em; color: #555; margin-bottom: 20px; flex-grow: 1; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
+        .tech-tag { background: var(--gray-light); padding: 4px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; color: var(--primary); }
+        .project-link { display: block; text-align: center; padding: 10px; border-top: 1px solid var(--border-color); color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9em; transition: background 0.2s; }
+        .project-link:hover { background: var(--gray-light); }
 
-        form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; }
-        input, textarea {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        button[type="submit"] {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        button[type="submit"]:hover { background: #2980b9; }
-        .contact-info { margin-bottom: 20px; }
+        /* Contact */
+        .contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+        .contact-info div { margin-bottom: 20px; }
+        .contact-info strong { display: block; color: var(--secondary); margin-bottom: 5px; }
+        form { display: flex; flex-direction: column; gap: 15px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; box-sizing: border-box; }
+        button[type="submit"] { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 4px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button[type="submit"]:hover { background: var(--secondary); }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Rachid Louakirim</h1>
-        <h2>Étudiant en informatique, systèmes et réseaux (1re année BTS SIO option SISR)</h2>
-        <a href="cv.pdf" target="_blank" class="btn-cv">📄 Télécharger mon CV (PDF)</a>
-    </header>
-
-    <div class="container">
-        
-        <div class="stage-banner">
-            🚀 Recherche un stage de 5 semaines en Systèmes et Réseaux (SISR) entre Mai et Août 2027.
+    <nav class="sidebar">
+        <div class="profile-pic-container">
+            📸 Photo Pro
         </div>
+        <h2>Rachid LOUAKIRIM</h2>
+        <p>Étudiant BTS SIO Option SISR</p>
+        <div class="nav-links">
+            <a href="#accueil">Accueil</a>
+            <a href="#profil">À propos</a>
+            <a href="#parcours">Parcours</a>
+            <a href="#competences">Compétences</a>
+            <a href="#projets">Projets E5</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <header id="accueil" class="header-title">
+            <h3>PORTFOLIO</h3>
+            <h1>Rachid LOUAKIRIM</h1>
+            <h2>Étudiant en informatique Systèmes et réseaux</h2>
+            <h3>1re année BTS SIO • Option SISR</h3>
+            <div class="header-buttons">
+                <a href="#projets">Voir les projets</a>
+                <a href="cv.pdf" target="_blank" class="btn-cv">Voir mon CV</a>
+                <a href="#contact">Me contacter</a>
+            </div>
+        </header>
 
         <section id="profil">
-            <h2 class="section-title">Profil & Objectifs</h2>
-            <p>Actuellement en première année de BTS SIO à distance avec le CNED, je me spécialise dans les solutions d'infrastructure, systèmes et réseaux. Doté d'une forte capacité d'organisation et d'un bon esprit d'équipe développé lors de projets entrepreneuriaux, je construis mes compétences techniques pour devenir un professionnel de l'informatique polyvalent.</p>
+            <div class="section-header">
+                <h4>À propos de moi</h4>
+                <h2>Profil</h2>
+            </div>
+            <div class="profil-grid">
+                <div>
+                    <p>Après l'obtention d'un <strong>Bac STMG (Spécialité Gestion et Finance)</strong> au Lycée René Cassin, j'ai choisi de m'orienter vers l'informatique d'infrastructure en intégrant la préparation du <strong>BTS SIO (Services Informatiques aux Organisations) option SISR</strong> avec le CNED.</p>
+                    <p>Mes expériences professionnelles variées (logistique, gestion de stock informatique et gestion de mini-entreprise) m'ont permis de développer mon <strong>autonomie</strong>, mon sens de l'<strong>organisation</strong> et mon <strong>esprit d'équipe</strong>. Aujourd'sui, je concentre mes apprentissages sur l'administration des systèmes, l'architecture réseau et les fondamentaux de la cybersécurité.</p>
+                </div>
+                <div class="stage-box">
+                    <h3>Recherche de stage</h3>
+                    <p>Je suis actuellement à la recherche d'un stage de <strong>4 à 5 semaines</strong> dans le domaine de l'administration des systèmes et réseaux (SISR), à réaliser entre <strong>mai et août 2027</strong>.</p>
+                </div>
+            </div>
         </section>
 
         <section id="parcours">
-            <h2 class="section-title">Parcours de formation et professionnel</h2>
+            <div class="section-header">
+                <h4>Formation & Expériences</h4>
+                <h2>Parcours</h2>
+            </div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-date">2026 - 2028</div>
-                    <div class="timeline-title">BTS SIO - Option SISR (En cours)</div>
-                    <div class="timeline-loc">CNED (À distance)</div>
-                    <p>Apprentissage de l'administration réseau, de la cybersécurité et de la gestion de parc informatique.</p>
+                    <span class="date-badge">Sept. 2026 - Aujourd'hui</span>
+                    <div class="timeline-content">
+                        <h3>1re année BTS SIO - Option SISR</h3>
+                        <h4>CNED (À distance)</h4>
+                        <p>Formation préparant aux métiers de l'administration des systèmes et réseaux, gestion des infrastructures informatiques, cybersécurité et support aux utilisateurs.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">Mars 2026 - Juin 2026</div>
-                    <div class="timeline-title">Agent Polyvalent</div>
-                    <div class="timeline-loc">Gerflor, Tarare</div>
-                    <p>Saisie des stocks sur ordinateur, gestion informatique des rouleaux sur PC et logistique de production.</p>
+                    <span class="date-badge">Mars 2026 - Juin 2026</span>
+                    <div class="timeline-content">
+                        <h3>Agent Polyvalent</h3>
+                        <h4>Gerflor</h4>
+                        <p>Gestion informatique des rouleaux sur PC, saisie des stocks sur ordinateur, enroulement et placement de bobines avec ponts roulants.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2023 - 2024</div>
-                    <div class="timeline-title">Chargé du service clientèle & Marketing (Mini-entreprise)</div>
-                    <div class="timeline-loc">Bloem Senteurs / Overa Green</div>
-                    <p>Travail en équipe de 30 élèves. Participation à deux reprises au Festival des Mini-entreprises. Mise en place d'un partenariat ayant abouti à un voyage professionnel d'une semaine en Suède.</p>
+                    <span class="date-badge">2023 - 2024</span>
+                    <div class="timeline-content">
+                        <h3>Chargé du service clientèle et marketing</h3>
+                        <h4>Mini-entreprise Bloem</h4>
+                        <p>Travail en équipe au sein d'une structure de 30 élèves. Mise en place d'un partenariat professionnel aboutissant à un voyage d'études d'une semaine en Suède.</p>
+                    </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-date">2024 - 2025</div>
-                    <div class="timeline-title">Baccalauréat STMG - Spécialité Gestion et Finance</div>
-                    <div class="timeline-loc">Lycée René Cassin, Tarare</div>
+                    <span class="date-badge">Juin 2025</span>
+                    <div class="timeline-content">
+                        <h3>Baccalauréat STMG - Spécialité Gestion et Finance</h3>
+                        <h4>Lycée René Cassin</h4>
+                        <p>Obtention du baccalauréat Sciences et Technologies du Management et de la Gestion.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="competences">
-            <h2 class="section-title">Compétences Techniques (Option SISR)</h2>
-            <div class="skills-grid">
-                <div class="skill-box">
-                    <h3>🛡️ Réseaux & Sécurité</h3>
-                    <p>Sensibilisation à la cybersécurité, analyse des vecteurs de propagation (ransomwares, phishing) et des points d'entrée réseau.</p>
+            <div class="section-header">
+                <h4>En cours d'acquisition</h4>
+                <h2>Compétences Techniques</h2>
+            </div>
+            <div class="skills-container">
+                
+                <div class="skill-category">
+                    <h3>Systèmes d'exploitation</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item"><span class="skill-icon">🪟</span>Windows</div>
+                        <div class="skill-item"><span class="skill-icon">🐧</span>Linux</div>
+                    </div>
                 </div>
-                <div class="skill-box">
-                    <h3>💻 Systèmes & Outils</h3>
-                    <p>Analyse et traitement de caractéristiques matérielles via tableur (processeurs, capacités de stockage, gestion de parc).</p>
+
+                <div class="skill-category">
+                    <h3>Réseaux & Infrastructures</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item"><span class="skill-icon">🌐</span>Architecture</div>
+                        <div class="skill-item"><span class="skill-icon">🔒</span>Sécurité</div>
+                    </div>
                 </div>
-                <div class="skill-box">
-                    <h3>⚙️ Développement</h3>
-                    <p>Programmation C# (algorithmique, boucles, gestion des exceptions avec try/catch).</p>
+
+                <div class="skill-category">
+                    <h3>Outils & Virtualisation</h3>
+                    <div class="skill-grid">
+                        <div class="skill-item"><span class="skill-icon">📊</span>Tableurs (Gestion)</div>
+                        <div class="skill-item"><span class="skill-icon">💻</span>C# (Bases)</div>
+                    </div>
                 </div>
-                <div class="skill-box">
-                    <h3>🌍 Transverses & Langues</h3>
-                    <p>Anglais (B2), Espagnol (B1). Mathématiques appliquées (Algèbre linéaire et calcul matriciel).</p>
-                </div>
+
             </div>
         </section>
 
-        <section id="realisations">
-            <h2 class="section-title">Réalisations Professionnelles (Épreuve E5)</h2>
-            <p><i>Cliquez sur une réalisation pour obtenir le détail des compétences mobilisées (les pages de détails seront ajoutées au fil de l'année).</i></p>
+        <section id="projets">
+            <div class="section-header">
+                <h4>Réalisations</h4>
+                <h2>Projets Scolaires & Professionnels</h2>
+            </div>
             
-            <div class="cards-grid">
-                <div class="card">
-                    <h3>Modélisation d'attaques informatiques</h3>
-                    <p><strong>Contexte :</strong> Études de cas sur l'identification des vulnérabilités réseau (phishing, ransomwares).</p>
-                    <span class="tag-bloc1">Bloc 1 : Vérifier le respect des règles d'utilisation</span>
-                    <span class="tag-bloc1">Bloc 1 : Recenser les ressources numériques</span>
-                    <p><em>Date : Fin 2026 | Technologies : Cybersécurité, Réseau</em></p>
+            <h3 style="margin-top:40px; color: var(--secondary);">Projets Scolaires (Bloc 1)</h3>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-img">[Capture d'écran de script C#]</div>
+                    <div class="project-content">
+                        <div class="project-status">2026 - En cours</div>
+                        <h3 class="project-title">Développement de scripts interactifs</h3>
+                        <p class="project-desc">Création de scripts consoles intégrant des saisies utilisateurs, des compteurs et la sécurisation des erreurs via des blocs try/catch.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Algorithmique</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Rachid-Louakirim" target="_blank" class="project-link">Projet sur GitHub</a>
                 </div>
 
-                <div class="card">
-                    <h3>Scripts interactifs & Gestion d'erreurs</h3>
-                    <p><strong>Contexte :</strong> Création de scripts consoles intégrant des saisies utilisateurs, des compteurs et la sécurisation des erreurs en C#.</p>
-                    <span class="tag-bloc1">Bloc 1 : Traiter des demandes concernant les applications</span>
-                    <p><em>Date : Fin 2026 | Technologies : C#, Visual Studio</em></p>
+                <div class="project-card">
+                    <div class="project-img">[Schéma réseau ou icône cybersécurité]</div>
+                    <div class="project-content">
+                        <div class="project-status">2026 - Réalisé</div>
+                        <h3 class="project-title">Analyse des vulnérabilités réseau</h3>
+                        <p class="project-desc">Études de cas sur l'identification des menaces informatiques, la modélisation d'attaques (phishing) et l'étude des vecteurs de propagation des ransomwares.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Cybersécurité</span>
+                            <span class="tech-tag">Réseau</span>
+                        </div>
+                    </div>
+                    <a href="https://github.com/Rachid-Louakirim" target="_blank" class="project-link">Plus d'informations</a>
                 </div>
 
-                <div class="card">
-                    <h3>Gestion de parc matériel</h3>
-                    <p><strong>Contexte :</strong> Exploitation avancée de bases de données pour filtrer et organiser les composants matériels d'une entreprise.</p>
-                    <span class="tag-bloc1">Bloc 1 : Recenser et identifier les ressources numériques</span>
-                    <p><em>Date : Fin 2026 | Technologies : Tableur, Traitement de données</em></p>
+            </div>
+
+            <h3 style="margin-top:50px; color: var(--secondary);">Projets Professionnels</h3>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <div class="project-img">[Image de mission professionnelle]</div>
+                    <div class="project-content">
+                        <div class="project-status">2027 - À venir</div>
+                        <h3 class="project-title">Projet de stage (Atelier 2)</h3>
+                        <p class="project-desc">Projet d'infrastructure ou de gestion de parc qui sera réalisé durant le stage de première année de BTS SIO.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Administration Système</span>
+                            <span class="tech-tag">Réseau</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Plus d'informations</a>
                 </div>
+
             </div>
         </section>
 
         <section id="contact">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-info">
-                <p>📍 <strong>Localisation :</strong> Tarare (Auvergne-Rhône-Alpes)</p>
-                <p>🔗 <strong>Réseaux :</strong> <a href="LIEN_LINKEDIN" target="_blank">Mon Profil LinkedIn</a> | <a href="https://github.com/Rachid-Louakirim" target="_blank">Mon GitHub</a></p>
+            <div class="section-header">
+                <h4>Échangeons ensemble</h4>
+                <h2>Contact</h2>
             </div>
-            
-            <form action="https://formspree.io/f/mljddpbz" method="POST">
-                <label for="email">Votre Email :</label>
-                <input type="email" id="email" name="email" required placeholder="exemple@entreprise.com">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div>
+                        <strong>Localisation</strong>
+                        Tarare
+                    </div>
+                    <div>
+                        <strong>Téléphone</strong>
+                        06 22 40 48 60
+                    </div>
+                    <div>
+                        <strong>Email professionnel</strong>
+                        Rtahri19@gmail.com
+                    </div>
+                    <div>
+                        <strong>Réseaux</strong>
+                        <a href="LIEN_LINKEDIN_ICI" style="color:var(--text-color); text-decoration:none;">🔗 Profil LinkedIn</a><br>
+                        <a href="https://github.com/Rachid-Louakirim" style="color:var(--text-color); text-decoration:none;">🐙 Profil GitHub</a>
+                    </div>
+                </div>
                 
-                <label for="message">Votre Message :</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Bonjour, je vous contacte suite à la consultation de votre portfolio..."></textarea>
-                
-                <button type="submit">Envoyer le message</button>
-            </form>
+                <div>
+                    <form action="https://formspree.io/f/mljddpbz" method="POST">
+                        <input type="text" name="nom" placeholder="Votre Nom" required>
+                        <input type="email" name="email" placeholder="Votre E-mail" required>
+                        <input type="text" name="objet" placeholder="Objet" required>
+                        <textarea name="message" rows="6" placeholder="Message" required></textarea>
+                        <button type="submit">Envoyer</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
-    </div>
+    </main>
 
 </body>
 </html>
