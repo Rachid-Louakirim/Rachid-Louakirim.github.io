@@ -3,134 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio - Étudiant en Informatique</title>
+    <title>Portfolio - Rachid Louakirim</title>
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --bg: #f8f9fa;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #f4f4f9;
+            background-color: var(--bg);
         }
         header {
-            background-color: #2c3e50;
+            background-color: var(--primary);
             color: #fff;
-            padding: 20px 0;
+            padding: 40px 20px;
             text-align: center;
         }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
+        header h1 { margin: 0; font-size: 2.5em; }
+        header h2 { color: var(--secondary); margin: 5px 0 15px; font-weight: normal; }
+        .btn-cv {
+            display: inline-block;
+            background: var(--secondary);
             color: #fff;
+            padding: 10px 20px;
             text-decoration: none;
+            border-radius: 5px;
             font-weight: bold;
+            margin-top: 15px;
         }
+        .btn-cv:hover { background: #2980b9; }
+        
         .container {
-            width: 80%;
+            width: 85%;
+            max-width: 1200px;
             margin: auto;
-            overflow: hidden;
             padding: 20px;
         }
+        
+        .stage-banner {
+            background-color: #fdfae6;
+            border-left: 5px solid #f1c40f;
+            padding: 15px;
+            margin: 20px 0;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
         section {
             background: #fff;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 30px 0;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
+        h2.section-title {
+            color: var(--primary);
+            border-bottom: 3px solid var(--secondary);
             padding-bottom: 10px;
+            margin-top: 0;
         }
-        .competences-grid {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+
+        .timeline {
+            border-left: 3px solid var(--secondary);
+            padding-left: 20px;
+            margin-left: 20px;
         }
-        .competence-box {
-            width: 45%;
-            margin-bottom: 15px;
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
         }
-        .projet {
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-            margin-bottom: 20px;
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
         }
+        .timeline-date { font-weight: bold; color: var(--secondary); }
+        .timeline-title { font-size: 1.2em; font-weight: bold; margin: 5px 0; }
+        .timeline-loc { font-style: italic; color: #7f8c8d; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .skill-box {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .tag-bloc1 {
+            display: inline-block;
+            background: #e1f5fe;
+            color: #0277bd;
+            font-size: 0.85em;
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; }
+        input, textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        button[type="submit"] {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button[type="submit"]:hover { background: #2980b9; }
+        .contact-info { margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Mon Portfolio</h1>
-        <p>Futur professionnel de l'informatique</p>
-        <nav>
-            <ul>
-                <li><a href="#profil">Profil</a></li>
-                <li><a href="#competences">Compétences</a></li>
-                <li><a href="#projets">Réalisations</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Rachid Louakirim</h1>
+        <h2>Étudiant en informatique, systèmes et réseaux (1re année BTS SIO option SISR)</h2>
+        <a href="cv.pdf" target="_blank" class="btn-cv">📄 Télécharger mon CV (PDF)</a>
     </header>
 
     <div class="container">
         
+        <div class="stage-banner">
+            🚀 Recherche un stage de 5 semaines en Systèmes et Réseaux (SISR) entre Mai et Août 2027.
+        </div>
+
         <section id="profil">
-            <h2>À propos de moi</h2>
-            <p>Actuellement en première année de BTS SIO (Services Informatiques aux Organisations) à distance, je construis mes compétences autour de la résolution de problèmes techniques et du développement.</p>
-            <p>Ce portfolio retrace mon évolution tout au long de l'année, mes apprentissages et les projets pratiques que je mène à bien.</p>
+            <h2 class="section-title">Profil & Objectifs</h2>
+            <p>Actuellement en première année de BTS SIO à distance avec le CNED, je me spécialise dans les solutions d'infrastructure, systèmes et réseaux. Doté d'une forte capacité d'organisation et d'un bon esprit d'équipe développé lors de projets entrepreneuriaux, je construis mes compétences techniques pour devenir un professionnel de l'informatique polyvalent.</p>
+        </section>
+
+        <section id="parcours">
+            <h2 class="section-title">Parcours de formation et professionnel</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026 - 2028</div>
+                    <div class="timeline-title">BTS SIO - Option SISR (En cours)</div>
+                    <div class="timeline-loc">CNED (À distance)</div>
+                    <p>Apprentissage de l'administration réseau, de la cybersécurité et de la gestion de parc informatique.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Mars 2026 - Juin 2026</div>
+                    <div class="timeline-title">Agent Polyvalent</div>
+                    <div class="timeline-loc">Gerflor, Tarare</div>
+                    <p>Saisie des stocks sur ordinateur, gestion informatique des rouleaux sur PC et logistique de production.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - 2024</div>
+                    <div class="timeline-title">Chargé du service clientèle & Marketing (Mini-entreprise)</div>
+                    <div class="timeline-loc">Bloem Senteurs / Overa Green</div>
+                    <p>Travail en équipe de 30 élèves. Participation à deux reprises au Festival des Mini-entreprises. Mise en place d'un partenariat ayant abouti à un voyage professionnel d'une semaine en Suède.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2025</div>
+                    <div class="timeline-title">Baccalauréat STMG - Spécialité Gestion et Finance</div>
+                    <div class="timeline-loc">Lycée René Cassin, Tarare</div>
+                </div>
+            </div>
         </section>
 
         <section id="competences">
-            <h2>Mes Compétences (en cours d'acquisition)</h2>
-            <div class="competences-grid">
-                <div class="competence-box">
-                    <h3>💻 Développement</h3>
-                    <p>Logique algorithmique et programmation en C# (manipulation de boucles, variables, gestion d'erreurs try/catch).</p>
+            <h2 class="section-title">Compétences Techniques (Option SISR)</h2>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <h3>🛡️ Réseaux & Sécurité</h3>
+                    <p>Sensibilisation à la cybersécurité, analyse des vecteurs de propagation (ransomwares, phishing) et des points d'entrée réseau.</p>
                 </div>
-                <div class="competence-box">
-                    <h3>🛡️ Cybersécurité & Réseau</h3>
-                    <p>Analyse des menaces informatiques, étude des vecteurs de propagation des ransomwares et sensibilisation aux risques de phishing en entreprise.</p>
+                <div class="skill-box">
+                    <h3>💻 Systèmes & Outils</h3>
+                    <p>Analyse et traitement de caractéristiques matérielles via tableur (processeurs, capacités de stockage, gestion de parc).</p>
                 </div>
-                <div class="competence-box">
-                    <h3>📊 Outils & Systèmes</h3>
-                    <p>Exploitation avancée de tableurs pour le traitement, le filtrage et l'analyse de données (comme la gestion de parcs informatiques et composants matériels).</p>
+                <div class="skill-box">
+                    <h3>⚙️ Développement</h3>
+                    <p>Programmation C# (algorithmique, boucles, gestion des exceptions avec try/catch).</p>
                 </div>
-                <div class="competence-box">
-                    <h3>📐 Mathématiques appliquées</h3>
-                    <p>Algèbre linéaire, calcul matriciel et puissances de matrices appliqués à l'informatique.</p>
+                <div class="skill-box">
+                    <h3>🌍 Transverses & Langues</h3>
+                    <p>Anglais (B2), Espagnol (B1). Mathématiques appliquées (Algèbre linéaire et calcul matriciel).</p>
                 </div>
             </div>
         </section>
 
-        <section id="projets">
-            <h2>Mes Projets & Réalisations</h2>
+        <section id="realisations">
+            <h2 class="section-title">Réalisations Professionnelles (Épreuve E5)</h2>
+            <p><i>Cliquez sur une réalisation pour obtenir le détail des compétences mobilisées (les pages de détails seront ajoutées au fil de l'année).</i></p>
             
-            <div class="projet">
-                <h3>Titre du projet à venir</h3>
-                <p><strong>Contexte :</strong></p>
-                <p><strong>Ce que j'ai fait :</strong></p>
-            </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <h3>Modélisation d'attaques informatiques</h3>
+                    <p><strong>Contexte :</strong> Études de cas sur l'identification des vulnérabilités réseau (phishing, ransomwares).</p>
+                    <span class="tag-bloc1">Bloc 1 : Vérifier le respect des règles d'utilisation</span>
+                    <span class="tag-bloc1">Bloc 1 : Recenser les ressources numériques</span>
+                    <p><em>Date : Fin 2026 | Technologies : Cybersécurité, Réseau</em></p>
+                </div>
 
-            <div class="projet">
-                <h3></h3>
-                <p><strong>Contexte :</strong></p>
-                <p><strong>Ce que j'ai fait :</strong> [pas encore ]</p>
+                <div class="card">
+                    <h3>Scripts interactifs & Gestion d'erreurs</h3>
+                    <p><strong>Contexte :</strong> Création de scripts consoles intégrant des saisies utilisateurs, des compteurs et la sécurisation des erreurs en C#.</p>
+                    <span class="tag-bloc1">Bloc 1 : Traiter des demandes concernant les applications</span>
+                    <p><em>Date : Fin 2026 | Technologies : C#, Visual Studio</em></p>
+                </div>
+
+                <div class="card">
+                    <h3>Gestion de parc matériel</h3>
+                    <p><strong>Contexte :</strong> Exploitation avancée de bases de données pour filtrer et organiser les composants matériels d'une entreprise.</p>
+                    <span class="tag-bloc1">Bloc 1 : Recenser et identifier les ressources numériques</span>
+                    <p><em>Date : Fin 2026 | Technologies : Tableur, Traitement de données</em></p>
+                </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Me Contacter</h2>
-            <p>Email : rtahri256@gmail.com</p>
-            <p>LinkedIn : [https://www.linkedin.com/in/rachid-louakirim-331257385/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BtyY3MTBbRFWdx81r7gIIJQ%3D%3D]</p>
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <p>📍 <strong>Localisation :</strong> Tarare (Auvergne-Rhône-Alpes)</p>
+                <p>🔗 <strong>Réseaux :</strong> <a href="LIEN_LINKEDIN" target="_blank">Mon Profil LinkedIn</a> | <a href="https://github.com/Rachid-Louakirim" target="_blank">Mon GitHub</a></p>
+            </div>
+            
+            <form action="https://formspree.io/f/mljddpbz" method="POST">
+                <label for="email">Votre Email :</label>
+                <input type="email" id="email" name="email" required placeholder="exemple@entreprise.com">
+                
+                <label for="message">Votre Message :</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Bonjour, je vous contacte suite à la consultation de votre portfolio..."></textarea>
+                
+                <button type="submit">Envoyer le message</button>
+            </form>
         </section>
 
     </div>
