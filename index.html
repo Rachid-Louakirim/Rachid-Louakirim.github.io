@@ -142,20 +142,22 @@
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .project-card { background: var(--box-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
-        .project-img { height: 140px; background-color: #ecf0f1; display: flex; align-items: center; justify-content: center; color: #95a5a6; font-style: italic; border-bottom: 1px solid var(--border-color); }
+        .project-img { height: 160px; overflow: hidden; }
+        .project-img img { width: 100%; height: 100%; object-fit: cover; }
         .project-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
         .project-status { font-size: 0.75em; font-weight: bold; color: var(--secondary); text-transform: uppercase; margin-bottom: 8px; }
         .project-title { font-size: 1.1em; font-weight: bold; margin: 0 0 8px 0; }
         .project-desc { font-size: 0.9em; color: #555; margin-bottom: 15px; flex-grow: 1; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
         .tech-tag { background: var(--gray-light); padding: 3px 6px; border-radius: 4px; font-size: 0.75em; font-weight: bold; color: var(--primary); }
-        .project-link { display: block; text-align: center; padding: 12px; background: var(--gray-light); color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9em; }
+        .project-link { display: block; text-align: center; padding: 12px; background: var(--gray-light); color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9em; transition: background 0.2s; }
+        .project-link:hover { background: #e2e8f0; }
 
         /* Contact */
         .contact-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
         form { display: flex; flex-direction: column; gap: 12px; }
         input, textarea { width: 100%; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; }
-        button[type="submit"] { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 4px; font-weight: bold; width: 100%; }
+        button[type="submit"] { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 4px; font-weight: bold; width: 100%; cursor: pointer; }
 
         /* ========================================= */
         /* === REGLES STRICTES POUR SMARTPHONES  === */
@@ -281,19 +283,19 @@
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <span class="date-badge">2023 - 2024</span>
-                    <div class="timeline-content">
-                        <h3>Chargé du service clientèle et marketing</h3>
-                        <h4>Mini-entreprise Bloem</h4>
-                        <p>Travail en équipe au sein d'une structure de 30 élèves. Mise en place d'un partenariat professionnel aboutissant à un voyage d'études d'une semaine en Suède.</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
                     <span class="date-badge">Juin 2025</span>
                     <div class="timeline-content">
                         <h3>Baccalauréat STMG - Spécialité Gestion et Finance</h3>
                         <h4>Lycée René Cassin</h4>
                         <p>Obtention du baccalauréat Sciences et Technologies du Management et de la Gestion.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <span class="date-badge">2023 - 2024</span>
+                    <div class="timeline-content">
+                        <h3>Chargé du service clientèle et marketing</h3>
+                        <h4>Mini-entreprise Bloem</h4>
+                        <p>Travail en équipe au sein d'une structure de 30 élèves. Mise en place d'un partenariat professionnel aboutissant à un voyage d'études d'une semaine en Suède.</p>
                     </div>
                 </div>
             </div>
@@ -343,7 +345,9 @@
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <div class="project-img">[Capture script C#]</div>
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=400&q=80" alt="Script console">
+                    </div>
                     <div class="project-content">
                         <div class="project-status">2026 - En cours</div>
                         <h3 class="project-title">Scripts interactifs</h3>
@@ -357,7 +361,9 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-img">[Schéma cybersécurité]</div>
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=400&q=80" alt="Cybersécurité">
+                    </div>
                     <div class="project-content">
                         <div class="project-status">2026 - Réalisé</div>
                         <h3 class="project-title">Analyse des vulnérabilités</h3>
@@ -367,7 +373,6 @@
                             <span class="tech-tag">Réseau</span>
                         </div>
                     </div>
-                    <a href="#" class="project-link">Plus d'informations</a>
                 </div>
 
             </div>
@@ -376,7 +381,9 @@
             <div class="projects-grid">
                 
                 <div class="project-card">
-                    <div class="project-img">[Image de mission]</div>
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?auto=format&fit=crop&w=400&q=80" alt="Projet à venir">
+                    </div>
                     <div class="project-content">
                         <div class="project-status">2027 - À venir</div>
                         <h3 class="project-title">Projet de stage</h3>
@@ -386,7 +393,6 @@
                             <span class="tech-tag">Réseau</span>
                         </div>
                     </div>
-                    <a href="#" class="project-link">À venir</a>
                 </div>
 
             </div>
@@ -399,13 +405,13 @@
             </div>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <div><strong>Localisation</strong>Tarare</div>
-                    <div><strong>Téléphone</strong>06 22 40 48 60</div>
-                    <div><strong>Email</strong>Rtahri19@gmail.com</div>
+                    <div><strong>Localisation : </strong>Tarare</div>
+                    <div><strong>Téléphone : </strong>06 22 40 48 60</div>
+                    <div><strong>Email : </strong>rtahri256@gmail.com</div>
                     <div>
-                        <strong>Réseaux</strong>
-                        <a href="#" style="color:var(--text-color); text-decoration:none;">🔗 Profil LinkedIn</a><br>
-                        <a href="https://github.com/Rachid-Louakirim" style="color:var(--text-color); text-decoration:none;">🐙 Profil GitHub</a>
+                        <strong>Réseaux : </strong>
+                        <a href="LIEN_LINKEDIN_ICI" style="color:var(--text-color); text-decoration:none;">🔗 Profil LinkedIn</a><br>
+                        <a href="https://rachid-louakirim.github.io" style="color:var(--text-color); text-decoration:none;">🌍 Mon Site Web</a>
                     </div>
                 </div>
                 
