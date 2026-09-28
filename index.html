@@ -140,16 +140,21 @@
         .skill-item { display: flex; flex-direction: column; align-items: center; background: var(--box-bg); padding: 10px 5px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-size: 0.85em; }
         .skill-icon { font-size: 1.8em; margin-bottom: 5px; color: var(--primary); }
 
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        /* Correction des cartes Projets pour éviter l'étirement sur PC */
+        .projects-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 25px; 
+        }
         .project-card { background: var(--box-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
-        .project-img { height: 160px; overflow: hidden; }
+        .project-img { height: 200px; overflow: hidden; }
         .project-img img { width: 100%; height: 100%; object-fit: cover; }
-        .project-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
         .project-status { font-size: 0.75em; font-weight: bold; color: var(--secondary); text-transform: uppercase; margin-bottom: 8px; }
-        .project-title { font-size: 1.1em; font-weight: bold; margin: 0 0 8px 0; }
+        .project-title { font-size: 1.2em; font-weight: bold; margin: 0 0 10px 0; }
         .project-desc { font-size: 0.9em; color: #555; margin-bottom: 15px; flex-grow: 1; }
         .project-tech { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 15px; }
-        .tech-tag { background: var(--gray-light); padding: 3px 6px; border-radius: 4px; font-size: 0.75em; font-weight: bold; color: var(--primary); }
+        .tech-tag { background: var(--gray-light); padding: 4px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; color: var(--primary); }
         .project-link { display: block; text-align: center; padding: 12px; background: var(--gray-light); color: var(--primary); text-decoration: none; font-weight: bold; font-size: 0.9em; transition: background 0.2s; }
         .project-link:hover { background: #e2e8f0; }
 
@@ -387,7 +392,7 @@
                     <div class="project-content">
                         <div class="project-status">2027 - À venir</div>
                         <h3 class="project-title">Projet de stage</h3>
-                        <p class="project-desc">Projet d'infrastructure ou de gestion de parc qui sera réalisé durant le stage de première année de BTS SIO.</p>
+                        <p class="project-desc">Projet professionnel à définir et à réaliser lors de mon stage de première année.</p>
                         <div class="project-tech">
                             <span class="tech-tag">Système</span>
                             <span class="tech-tag">Réseau</span>
@@ -410,8 +415,8 @@
                     <div><strong>Email : </strong>rtahri256@gmail.com</div>
                     <div>
                         <strong>Réseaux : </strong>
-                        <a href="LIEN_LINKEDIN_ICI" style="color:var(--text-color); text-decoration:none;">🔗 Profil LinkedIn</a><br>
-                        <a href="https://rachid-louakirim.github.io" style="color:var(--text-color); text-decoration:none;">🌍 Mon Site Web</a>
+                        <a href="https://www.linkedin.com/in/rachid-louakirim-331257385/" target="_blank" style="color:var(--text-color); text-decoration:none;">🔗 Profil LinkedIn</a><br>
+                        <a href="https://github.com/Rachid-Louakirim" target="_blank" style="color:var(--text-color); text-decoration:none;">🐙 Profil GitHub</a>
                     </div>
                 </div>
                 
