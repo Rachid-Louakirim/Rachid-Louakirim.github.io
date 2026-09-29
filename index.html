@@ -63,6 +63,12 @@
             border: 3px solid var(--secondary);
             overflow: hidden;
         }
+        
+        .profile-pic-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
         .sidebar h2 { margin: 5px 0; font-size: 1.2em; text-align: center; padding: 0 10px; }
         .sidebar p { font-size: 0.8em; color: #bdc3c7; text-align: center; margin-bottom: 20px; padding: 0 10px; }
@@ -140,7 +146,6 @@
         .skill-item { display: flex; flex-direction: column; align-items: center; background: var(--box-bg); padding: 10px 5px; border: 1px solid var(--border-color); border-radius: 6px; text-align: center; font-size: 0.85em; }
         .skill-icon { font-size: 1.8em; margin-bottom: 5px; color: var(--primary); }
 
-        /* Correction des cartes Projets pour éviter l'étirement sur PC */
         .projects-grid { 
             display: grid; 
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
@@ -220,7 +225,7 @@
 
     <nav class="sidebar">
         <div class="profile-pic-container">
-            📸 Photo
+            <img src="photo.png" alt="Rachid Louakirim">
         </div>
         <h2>Rachid LOUAKIRIM</h2>
         <p>BTS SIO SISR</p>
